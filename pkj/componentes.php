@@ -7,7 +7,6 @@ function botao($id, $texto, $clicar = "PADRAO") {
 function radio($id,$texto,$clicar="PADRAO",$grupo="PADRAO"){
  $clicar = ($clicar == "PADRAO") ? $id . "_clicar();" : $clicar;
   return "<input id='rd" . $id . "' type='radio' name='$grupo' style='padding:5px;' value='$texto' onclick='setTimeout(function(){ try{ $clicar }catch(e){} },1)' />";
-  echo '<!-- merda -- >';
  }
 function combo($id, $itens, $valoresItens, $texto = "", $mudar = "PADRAO") {
  $retorno = "";
