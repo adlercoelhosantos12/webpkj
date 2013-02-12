@@ -85,7 +85,7 @@ function formulario($nomes) {
   echo strtoupper(substr($nomes[$index], 0, 1)) . substr($nomes[$index], 1);
   echo "</div>";
   echo "<div class='col_10'>";
-  echo "<input type='".($nomes[$index]=="senha")?"password":"text"."' style='width:100%;' name='$nomes[$index]' id='txt$nomes[$index]' />";
+  echo "<input type='".(($nomes[$index]=="senha")?"password":"text")."' style='width:100%;' name='$nomes[$index]' id='txt$nomes[$index]' />";
   echo "</div>";
  }
 }
