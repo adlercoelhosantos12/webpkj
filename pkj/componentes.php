@@ -53,13 +53,26 @@ function pkj_listaHorizontal($itens, $margem = "5px") {
     return $retorno;
 }
 
-function pkj_rotulo($id = "", $link = "", $texto = "") {
+function pkj_rotulo($texto = "", $link = "", $id = "") {
     $retorno = "";
     if ($link != "") {
         $retorno = "<a id='$id' href='$link' >$texto</a>";
     } else {
-     $retorno = "<span id='$id'>$texto</span>";   
+        $retorno = "<span id='$id'>$texto</span>";
     }
+    return $retorno;
+}
+
+function pkj_texto($id, $clicar = "PADRAO", $texto = "") {
+    $clicar = ($clicar == "PADRAO") ? $id . "_clicar();" : $clicar;
+    return "<input id='txt" . $id . "' type='text' style='padding:5px;' value='$texto' onclick='setTimeout(function(){ try{ $clicar }catch(e){} },1)' />";
+}
+
+function pkj_campo($id, $texto, $clicar = "PADRAO") {
+    $retorno = "";
+    $clicar = ($clicar == "PADRAO") ? $id . "_clicar();" : $clicar;
+    $retorno .= pkj_rotulo($texto);
+    $retorno .= pkj_texto($id, $clicar);
     return $retorno;
 }
 
