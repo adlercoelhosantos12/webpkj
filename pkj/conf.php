@@ -28,7 +28,6 @@ class conf {
                 $this->pkj_bd_sis_conexao = pg_connect("host=$this->endereco user=$this->usuario password=$this->senha dbname=$this->base");
                 break;
             case "mssql":
-                echo "Em testes";
                 $this->pkj_bd_sis_conexao = odbc_connect("Driver={SQL Server Native Client 10.0};Server=$this->endereco;Database=$this->base;", $this->usuario, $this->senha);
                 break;
         }
