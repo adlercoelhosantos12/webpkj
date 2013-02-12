@@ -5,7 +5,7 @@ function importPHP($nome) {
 }
 
 function pkj_importPHP($nome) {
-    include 'base/php/' . $nome . '/' . $nome . '.php';
+    include 'pkj/php/' . $nome . '/' . $nome . '.php';
 }
 
 function pkj_import($elemento) {
