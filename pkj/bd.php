@@ -115,7 +115,7 @@ function geraTable($resultado) {
 }
 
 function pkj_query($comando, $atributos = null, $oo = true) {
-    return query($comando, $atributos = null, $oo = true);
+    return query($comando, $atributos, $oo = true);
 }
 
 function query($comando, $atributos = null, $oo = true) {
