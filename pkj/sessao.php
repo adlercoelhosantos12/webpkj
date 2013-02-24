@@ -15,6 +15,7 @@ function pkj_sessao_set($campo,$valor){
  $_SESSION[$campo] = $valor;
  error_reporting(-1);
 }
+
 function pkj_sessao_destroi(){
  error_reporting(0); 
  session_start();

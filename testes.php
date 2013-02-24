@@ -1,4 +1,5 @@
 <?php
+include 'pkj/sessao.php';
 include 'pkj/pkj.php';
 include 'pkj/componentes.php';
 ?>
@@ -14,6 +15,7 @@ include 'pkj/componentes.php';
     </head>
     <body style="text-align: center">
         <?php
+        pkj_sessao_set("nome", "Felipe");
         $i[] = pkj_rotulo("Nome");
         $i[] = pkj_texto("nome");
         $i[] = pkj_botao('salvar', 'Salvar');
@@ -23,7 +25,9 @@ include 'pkj/componentes.php';
             function salvar_clicar() {
                 var nome = $('#txtnome').val();
                 alert('Seu nome é ' + nome);
+                alert('Sessão <?=  pkj_sessao_get("nome")?>');
             }
         </script>
+        <?php pkj_sessao_destroi(); ?>
     </body>
 </html>
