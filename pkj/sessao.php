@@ -1,5 +1,5 @@
 <?php
-function get($campo){
+function pkj_sessao_get($campo){
  error_reporting(0);
  ob_start(); 
  session_start();
@@ -8,7 +8,7 @@ function get($campo){
  return $retorno;
 }
 
-function set($campo,$valor){
+function pkj_sessao_set($campo,$valor){
  error_reporting(0);
  ob_start(); 
  session_start();
@@ -16,7 +16,7 @@ function set($campo,$valor){
  error_reporting(-1);
 }
 
-function info(){
+function pkj_sessao_info(){
  error_reporting(0);
  session_start();
  $retorno = session_status();
