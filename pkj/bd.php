@@ -108,7 +108,7 @@ function pkj_geraTable($resultado) {
 }
 
 function geraTable($resultado) {
- if (count($resultado) <= 1) {
+ if (count($resultado) <= 0) {
   echo "<div class='col_12' style='text-align:center' >Nada encontrado</div>";
   return false;
  }
