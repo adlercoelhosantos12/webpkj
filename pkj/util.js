@@ -179,7 +179,7 @@ function valida(elemento, valor) {
   if (digitado == 8 || digitado == 9 || digitado == 32 || digitado == 16 || digitado == 20 || digitado >= 37 && digitado <= 40) {
   } else {
    if (valor == "numerico") {
-    if (digitado >= 48 && digitado <= 57) {
+    if (digitado >= 48 && digitado <= 57 ||digitado >= 97 && digitado <= 105 ) {
     } else {
      return false;
     }
@@ -189,7 +189,7 @@ function valida(elemento, valor) {
      return false;
     }
    } else if (valor == "alfanumerico") {
-    if (digitado >= 48 && digitado <= 57 || digitado >= 65 && digitado <= 90 || digitado >= 97 && digitado <= 122) {
+    if (digitado >= 48 && digitado <= 57 || digitado >= 65 && digitado <= 90 || digitado >= 97 && digitado <= 122 ||digitado >= 97 && digitado <= 105) {
     } else {
      return false;
     }
