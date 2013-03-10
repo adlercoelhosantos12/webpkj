@@ -224,3 +224,37 @@ function formData(formulario) {
  json += "}";
  return eval("(" + json + ")");
 }
+   function Sql() {
+    this.base = null;
+    this.dados = null;
+
+    this.abrir = function(nome, tamanho, versao) {
+     this.base = openDatabase(nome, versao, 'pkj', tamanho * 1024 * 2014);
+    };
+
+    this.executa = function(sql) {
+     var ret = null;
+     this.base.transaction(function(tx) {
+      var tipoComando = sql.toString().toUpperCase();
+      tipoComando = tipoComando.split(" ");
+      tipoComando = tipoComando[0];
+      if (tipoComando != "SELECT") {
+       tx.executeSql(sql);
+      }
+     });
+     return ret;
+    };
+
+    this.consulta = function(sql, aoCarregar) {
+     this.base.transaction(function(tx) {
+      var tipoComando = sql.toString().toUpperCase();
+      tipoComando = tipoComando.split(" ");
+      tipoComando = tipoComando[0];
+      if (tipoComando == "SELECT") {
+       tx.executeSql(sql, [], function(tx1, resultados) {
+        aoCarregar(resultados);
+       });
+      }
+     });
+    }
+    
