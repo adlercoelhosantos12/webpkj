@@ -224,38 +224,51 @@ function formData(formulario) {
  json += "}";
  return eval("(" + json + ")");
 }
-   function Sql() {
-    this.base = null;
-    this.dados = null;
 
-    this.abrir = function(nome, tamanho, versao) {
-     this.base = openDatabase(nome, versao, 'pkj', tamanho * 1024 * 2014);
-    };
 
-    this.executa = function(sql) {
-     var ret = null;
-     this.base.transaction(function(tx) {
-      var tipoComando = sql.toString().toUpperCase();
-      tipoComando = tipoComando.split(" ");
-      tipoComando = tipoComando[0];
-      if (tipoComando != "SELECT") {
-       tx.executeSql(sql);
-      }
-     });
-     return ret;
-    };
+function Sql() {
+ this.base = null;
+ this.dados = null;
+ this.ultimoComando = "";
+ this.abrir = function(nome, tamanho, versao) {
+  this.base = openDatabase(nome, versao, 'pkj', tamanho * 1024 * 1014);
+ };
 
-    this.consulta = function(sql, aoCarregar) {
-     this.base.transaction(function(tx) {
-      var tipoComando = sql.toString().toUpperCase();
-      tipoComando = tipoComando.split(" ");
-      tipoComando = tipoComando[0];
-      if (tipoComando == "SELECT") {
-       tx.executeSql(sql, [], function(tx1, resultados) {
-        aoCarregar(resultados);
-       });
-      }
-     });
-    }
-   }
-    
+ this.executa = function(sql) {
+  var ret = null;
+  this.base.transaction(function(tx) {
+   var tipoComando = sql.toString().toUpperCase();
+   tipoComando = tipoComando.split(" ");
+   tipoComando = tipoComando[0];
+   this.ultimoComando = sql;
+   tx.executeSql(sql);
+  });
+  return ret;
+ };
+
+ this.consulta = function(sql, aoCarregar) {
+  this.base.transaction(function(tx) {
+   var tipoComando = sql.toString().toUpperCase();
+   tipoComando = tipoComando.split(" ");
+   tipoComando = tipoComando[0];
+   tx.executeSql(sql, [], function(tx, resultados) {
+    this.ultimoComando = sql;
+    aoCarregar(resultados);
+   });
+  });
+ }
+}
+
+function header() {
+ document.write("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+ document.write("<meta name='viewport' content='user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi' />");
+ document.write("<script type=\"text/javascript\" src=\"lib/cordova-2.5.0.js\" ><\/script>");
+ document.write("<script type='text/javascript' src='lib/jquery-1.8.2.js' ><\/script>");
+ document.write("<script type='text/javascript' src='lib/jquery.mobile-1.2.0.min.js' ><\/script>");
+ document.write("<script type='text/javascript' src='lib/mask.js' ><\/script>");
+ document.write("<script type='text/javascript' src='lib/maskMoney.js' ><\/script>");
+ document.write("<script type='text/javascript' src='lib/util.js' ><\/script>");
+ document.write("<link href='lib/jquery.mobile.structure-1.2.0.min.css' rel='stylesheet' >");
+ document.write("<link href='lib/jquery.mobile.theme-1.2.0.min.css' rel='stylesheet' >");
+ document.write("");
+}
