@@ -272,3 +272,26 @@ function header() {
  document.write("<link href='lib/jquery.mobile.theme-1.2.0.min.css' rel='stylesheet' >");
  document.write("");
 }
+/**
+ * Created by: http://gustavopaes.net
+ * Created on: Nov/2009
+ * 
+ * Retorna os valores de parâmetros passados via url.
+ *
+ * @param String Nome da parâmetro.
+ * @param String name nome do parametro a ser buscado 
+ */
+function _GET(name)
+{
+  var url   = window.location.search.replace("?", "");
+  var itens = url.split("&");
+
+  for(n in itens)
+  {
+    if( itens[n].match(name) )
+    {
+      return decodeURIComponent(itens[n].replace(name+"=", ""));
+    }
+  }
+  return null;
+}
