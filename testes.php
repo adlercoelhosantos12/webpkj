@@ -31,3 +31,4 @@ include 'pkj/componentes.php';
         <?php pkj_sessao_destroi(); ?>
     </body>
 </html>
+<!-- vinganssa -->
