@@ -111,7 +111,7 @@ function formulario($nomes) {
         echo "</div>";
     }
 }
-pkj_utf8_encode($lista){
+function pkj_utf8_encode($lista){
     return utf8_array_encode($lista);
 }
 function utf8_array_encode($array){
